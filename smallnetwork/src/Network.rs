@@ -1,10 +1,10 @@
 use std::io;
-pub struct SmallNetwork {
+pub struct Network {
     version: String,
 }
-impl SmallNetwork {
+impl Network {
     pub fn new() -> Self {
-        SmallNetwork {
+        Network {
             version: "1.0.0".to_string(),
         }
     }

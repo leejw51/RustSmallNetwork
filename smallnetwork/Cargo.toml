@@ -1,9 +1,8 @@
 [package]
-name = "program"
+name = "smallnetwork"
 version = "0.1.0"
 authors = ["jongwhan lee <leejw51@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-smallnetwork = {path="../smallnetwork"}
-smallgameserver = {path="../smallgameserver"}
+tokio = ""

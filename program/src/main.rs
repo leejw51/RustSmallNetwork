@@ -1,7 +1,8 @@
-mod smallnetwork;
-use smallnetwork::SmallNetwork;
+extern crate  smallnetwork;
+use smallnetwork::Network::{Network};
+
 fn main() {
-    let mut m = SmallNetwork::new();
+    let mut m = Network::new();
     m.initialize();
     m.menu(); 
 }
