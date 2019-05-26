@@ -1,3 +1,4 @@
+pub mod GameServer;
 #[cfg(test)]
 mod tests {
     #[test]
