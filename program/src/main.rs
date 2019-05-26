@@ -1,3 +1,7 @@
+mod smallnetwork;
+use smallnetwork::SmallNetwork;
 fn main() {
-    println!("Hello, world!");
+    let mut m = SmallNetwork::new();
+    m.initialize();
+    m.menu(); 
 }
