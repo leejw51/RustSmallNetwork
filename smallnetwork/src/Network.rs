@@ -4,6 +4,7 @@ pub struct Network {
 }
 impl Network {
     pub fn new() -> Self {
+        println!("network created");
         Network {
             version: "1.0.0".to_string(),
         }

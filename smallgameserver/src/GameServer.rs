@@ -5,8 +5,10 @@ use crate::game::{Chat, ChatReply};
 use protobuf::error::ProtobufError;
 use protobuf::{parse_from_reader, ProtobufResult, parse_from_bytes};
 use protobuf::{Message};
+use smallnetwork::Network::{Network};
 pub struct GameServer {
     version: String,
+    network: Network,
 }
 pub trait UserControl  {
     fn initialize(&mut self);
@@ -17,6 +19,7 @@ impl GameServer {
     pub fn new() -> Self {
         GameServer {
             version: "1.0.0".to_string(),
+            network: Network::new(),
         }
     }
     pub fn test(&mut self) 
