@@ -5,5 +5,7 @@ use smallgameserver::GameServer::{GameServer};
 fn main() {
     let mut m = GameServer::new();
     m.initialize();
-    m.menu(); 
+    //m.menu();
+    m.runServer();
+
 }
