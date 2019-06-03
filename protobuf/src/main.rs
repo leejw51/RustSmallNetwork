@@ -23,6 +23,8 @@ pub fn main() {
         input: files.as_slice(),
         includes: &["protos"],
         customize: Customize {
+         //   carllerche_bytes_for_bytes: Some(true),
+           // carllerche_bytes_for_string: Some(true),
             ..Default::default()
         },
     }).expect("protoc");

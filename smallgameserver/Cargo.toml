@@ -6,4 +6,4 @@ edition = "2018"
 
 [dependencies]
 smallnetwork = {path="../smallnetwork"}
-protobuf = ""
+protobuf = "2.0.2"
