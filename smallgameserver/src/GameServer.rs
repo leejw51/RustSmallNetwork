@@ -3,7 +3,7 @@ use crate::myinfo::Information;
 use std::io;
 use crate::game::{Chat, ChatReply};
 use protobuf::error::ProtobufError;
-use protobuf::{parse_from_reader, ProtobufResult};
+use protobuf::{parse_from_reader, ProtobufResult, parse_from_bytes};
 use protobuf::{Message};
 pub struct GameServer {
     version: String,
@@ -25,9 +25,10 @@ impl GameServer {
         let mut m = Chat::new();
         m.set_query("hello world".to_string());
         println!("{:?}", m);
-        let bytes=m.write_to_bytes().unwrap();
-        println!("bytes= {:?}", bytes);
-         
+        let   b=m.write_to_bytes().unwrap();
+        println!("bytes= {:?}", b);
+        let chat2: Chat = parse_from_bytes(& b).unwrap();
+        println!("{:?}", chat2);
     }
     pub fn setup(&mut self) {
       //  let info = myinfo::Information {info:"1.0.0"};
