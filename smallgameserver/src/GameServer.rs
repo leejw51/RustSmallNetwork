@@ -56,7 +56,7 @@ impl UserControl for GameServer
 {
     fn initialize(&mut self) 
     {
-        println!("UserControl initialize");
+        println!("UsergControl initialize");
         self.setup();
     }
      fn startServer(&mut self) 
