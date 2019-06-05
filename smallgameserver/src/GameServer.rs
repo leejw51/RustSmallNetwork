@@ -6,21 +6,36 @@ use protobuf::error::ProtobufError;
 use protobuf::{parse_from_reader, ProtobufResult, parse_from_bytes};
 use protobuf::{Message};
 use smallnetwork::Network::{Network};
+use std::sync::Arc;
+use std::cell::RefCell;
+use std::sync::Weak;
+
+
+
 pub struct GameServer {
-     version: String,
+     pub version: &'static str ,
+     pub net: Network,
 }
+
+
 pub trait UserControl  {
     fn initialize(&mut self);
     fn startServer(&mut self) ;
 }
-//---------------------------------------------------------------------------------------------------
-impl GameServer {
-    pub fn new() -> Self {
-        GameServer {
-            version: "1.0.0".to_string(),
-        }
+
+pub trait Program {
+    fn run(&mut self);
+}
+
+
+impl Program for GameServer {
+    fn run(&mut self) {
+        (self.net.onReceived)(1);
+        (self.net.onSent)(2);
     }
-    pub fn test(&mut self) 
+}
+impl GameServer {
+/*    pub fn test(&mut self) 
     {
         println!("test");
         let mut m = Chat::new();
@@ -30,20 +45,10 @@ impl GameServer {
         println!("bytes= {:?}", b);
         let chat2: Chat = parse_from_bytes(& b).unwrap();
         println!("{:?}", chat2);
-    }
+    }*/
     pub fn setup(&mut self) {
-      //  let info = myinfo::Information {info:"1.0.0"};
-       // println!("game server version={}", self.version);
-        self.test();
-
-        let callback= |a| {
-            println!("callback!={}",a);
-            a+100
-        };
-        let mut p = Network{version:"1.0.0.".to_string(),
-        callback: callback
-        };
-        p.initialize();
+    //    self.test();
+     
     }
     pub fn runServer(&mut self) {
         println!("server");
@@ -73,12 +78,14 @@ impl GameServer {
 
 }
 
-impl UserControl for GameServer 
+
+impl  UserControl for GameServer
 {
     fn initialize(&mut self) 
     {
-        println!("UsergControl initialize");
+        println!("UserControl initialize");
         self.setup();
+
     }
      fn startServer(&mut self) 
     {
@@ -86,3 +93,5 @@ impl UserControl for GameServer
         self.runServer();
     }
 }
+
+
